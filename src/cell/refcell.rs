@@ -468,6 +468,7 @@ impl<T: PSafe, A: MemPool> PRefCell<T, A> {
     ///
     #[inline]
     #[track_caller]
+    #[allow(invalid_reference_casting)]
     pub fn borrow_mut(&self, journal: &Journal<A>) -> RefMut<'_, T, A> {
         #[cfg(not(feature = "no_dyn_borrow_checking"))] {
             let borrow = self.borrow.as_mut();

@@ -78,6 +78,7 @@ impl<T: Default + VSafe, A: MemPool> TCell<T, A> {
     }
 
     #[inline]
+    #[allow(invalid_reference_casting)]
     pub(crate) fn as_mut(&self) -> &mut T {
         unsafe { &mut *(self.deref() as *const T as *mut T) }
     }

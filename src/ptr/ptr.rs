@@ -151,6 +151,7 @@ impl<A: MemPool, T: ?Sized> Ptr<T, A> {
     }
 
     #[inline]
+    #[allow(invalid_reference_casting)]
     /// Returns a reference to the file offset
     pub(crate) fn off_mut(&self) -> &mut u64 {
         unsafe { &mut *(&self.off as *const u64 as *mut u64) }

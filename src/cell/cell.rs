@@ -262,6 +262,7 @@ impl<T: PSafe, A: MemPool> PCell<T, A> {
     ///     assert_eq!(five, 5);
     /// }).unwrap();
     /// ```
+    #[allow(invalid_reference_casting)]
     pub fn into_inner(self) -> T {
 
         #[cfg(any(feature = "use_pspd", feature = "use_vspd"))] {
@@ -274,6 +275,7 @@ impl<T: PSafe, A: MemPool> PCell<T, A> {
     }
 
     #[inline]
+#[allow(invalid_reference_casting)]
     fn self_mut(&self) -> &mut Self {
         unsafe { &mut *(self as *const Self as *mut Self) }
     }
@@ -471,6 +473,7 @@ impl<T: PSafe + Default, A: MemPool> PCell<T, A> {
     }
 }
 
+#[allow(invalid_reference_casting)]
 impl<T: fmt::Debug + PSafe + Copy, A: MemPool> fmt::Debug for PCell<T, A> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         #[cfg(any(feature = "use_pspd", feature = "use_vspd"))] {

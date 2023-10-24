@@ -8,6 +8,7 @@ use std::pin::Pin;
 use std::ops::{Deref, DerefMut};
 use std::future::Future;
 use std::panic::{RefUnwindSafe, UnwindSafe};
+use std::any::Any;
 use std::cell::UnsafeCell;
 use std::fmt;
 
@@ -126,7 +127,7 @@ pub unsafe auto trait TxInSafe {}
 pub unsafe auto trait LooseTxInUnsafe {}
 
 /// Any type is okay to be transferred to a transaction
-unsafe impl LooseTxInUnsafe for dyn std::any::Any {}
+//unsafe impl<T> LooseTxInUnsafe for dyn Any {}
 unsafe impl<'a, T> LooseTxInUnsafe for &'a mut T {}
 unsafe impl<T> LooseTxInUnsafe for *const T {}
 unsafe impl<T> LooseTxInUnsafe for *mut T {}
