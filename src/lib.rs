@@ -102,7 +102,6 @@
 //! [`open<T>()`]: ./alloc/struct.MemPool.html#method.open
 
 #![feature(auto_traits)]
-#![feature(untagged_unions)]
 #![feature(specialization)]
 #![feature(concat_idents)]
 #![feature(core_intrinsics)]
